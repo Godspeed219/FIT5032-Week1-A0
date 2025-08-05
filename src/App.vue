@@ -1,7 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import JSON from './components/JSON.vue'
-import MyName from './components/MyName.vue'
+import HelloWorld from './Week-1-2/components/HelloWorld.vue'
+import JSON from './Week-1-2/components/JSON.vue'
+import MyName from './Week-1-2/components/MyName.vue'
 </script>
 
 <template>
