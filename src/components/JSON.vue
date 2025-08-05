@@ -88,22 +88,41 @@
       <!-- Activity 12: Get the top sellers from the bookstores object. -->
       <!-- TODO: CODE TO GET TOP SELLERS HERE -->
       <p>We operate in:</p>
-      <p>Our #1 seller:</p>
+      <ul>
+        <li v-for="country in bookstores.countries" :key="country">
+          {{ country }}
+        </li>
+      </ul>
+
+      <p>Our #1 sellers:</p>
+      <ul>
+        <li v-for="topSeller in bookstores.topSellers" :key="topSeller">
+          {{ topSeller }}
+        </li>
+      </ul>
     </section>
 
     <section class="lab-section">
       <h2>v-if & v-else</h2>
       <p>Toggle visibility based on a condition.</p>
       <!-- Activity 13: Toggle the message visibility when the button is clicked. -->
-      <!-- TODO: CODE TO TOGGLE MESSAGE VISIBILITY HERE. Hint: Use the v-if directive. -->
       <button @click="showMessage = !showMessage">Toggle Message</button>
-      <p class="message success">✨ You're a Vue superstar! ✨</p>
-      <p>Click the button to see a message.</p>
+      <p v-if="showMessage" class="message success">✨ You're a Vue superstar! ✨</p>
+      <p v-else class="message">Click the button to see a message.</p>
     </section>
 
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
+      <ul>
+        <li
+          v-for="author in authors"
+          :key="author.id"
+          :class="{ highlight: author.id === highlightedAuthorId }"
+        >
+          {{ author.name }} ({{ author.birthYear }})
+        </li>
+      </ul>
     </section>
   </div>
 </template>
@@ -115,6 +134,7 @@ import { ref, computed } from 'vue'
 import authors from '../assets/json/authors.json'
 import bookstores from '../assets/json/bookstores.json'
 
+const highlightedAuthorId = ref(2)
 const showMessage = ref(false)
 
 // Activity 2: Get authors born after 1850
